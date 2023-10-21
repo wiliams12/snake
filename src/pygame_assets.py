@@ -1,5 +1,9 @@
 import pygame
 
+"""
+Implements Text() and Button() classes used in the UI.
+"""
+
 class Text():
     def __init__(self,text,x,y,size,color):
         pygame.font.init()

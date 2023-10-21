@@ -1,8 +1,15 @@
 import pygame
 from pygame.locals import *
-from components import *
+from components import Game
+
+"""
+Imports pygame and the Game class from a module
+"""
 
 def game_loop():
+    """
+    The game loop uses the Game class. Check components.py for the implementation if needed
+    """
     game = Game()
     game.start_screen()
     while game.running:
@@ -16,6 +23,7 @@ def game_loop():
         game.evaluate()
         game.move()
         game.blop()
+        #Limits the fps to 6 per second
         game.clock.tick(6)
     game.running = True
     game.end_screen()
