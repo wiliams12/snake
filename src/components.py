@@ -61,7 +61,7 @@ class Game():
             pygame.display.flip()
 
         buttons = []
-        buttons.append(Button(self.screen_size,"Endless mode", (self.screen_size//2,self.screen_size//2)))
+        buttons.append(Button(self.screen_size,"Classic mode", (self.screen_size//2,self.screen_size//2)))
         buttons.append(Button(self.screen_size,"Boxed mode", (self.screen_size//2,self.screen_size//4*3)))
 
         while self.running:
@@ -71,8 +71,8 @@ class Game():
                 elif event.type == MOUSEBUTTONDOWN:
                     for btn in buttons:
                         if btn.pressed(event):
-                            if btn.text == "Endless mode":
-                                self.mode = "endless"
+                            if btn.text == "Classic mode":
+                                self.mode = "classic"
                             if btn.text == "Boxed mode":
                                 self.mode = "boxed"
                             self.running = False
@@ -117,7 +117,7 @@ class Game():
         Checks whether an action is needed in the current state. Checks whether the snake has eaten a blob and whether it crossed it's tale.
 
         Boxed mode: Checks whether the snake is still in the game grid. If not, it ends the game loop.
-        Endless mode: Checkes whether the snake is in the game grid. If not, it moves the self.pos to to opposite side of the grid.
+        Classic mode: Checkes whether the snake is in the game grid. If not, it moves the self.pos to to opposite side of the grid.
         """
         if self.pos == self.blob_loc:
             self.snake.append(None)
@@ -130,7 +130,7 @@ class Game():
             if self.pos[0] not in list(range(0,self.game_res)) or self.pos[1] not in list(range(0,self.game_res)):
                 self.running = False
 
-        if self.mode == "endless":
+        if self.mode == "classic":
             if self.pos[0] < 0:
                 self.pos = (self.game_res, self.pos[1])
                 self.dir = (-1, 0)
